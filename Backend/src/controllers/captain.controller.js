@@ -11,6 +11,7 @@ module.exports.registerCaptain = async (req, res, next) => {
   }
 
   const {fullname, email, password, vehicle} = req.body;
+  console.log(req.body);
   
   const isCaptainAlreadyExists = await captainModel.findOne({email});
 
@@ -79,6 +80,8 @@ module.exports.logoutCaptain = async (req, res, next) => {
   const token = req.cookies.token|| req.headers.authorization.split(' ')[1];
 
   await blackListTokenModel.create({token});
+  console.log('token', token);
+  
 
   res.clearCookie('token');
 

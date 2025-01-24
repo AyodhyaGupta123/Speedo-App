@@ -1,3 +1,4 @@
+import { CaptainDataContext } from '../context/CaptainContext'
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -15,6 +16,7 @@ const CaptainProtectWrapper = ({
 
 
     useEffect(() => {
+        console.log("Token:", token);
         if (!token) {
             navigate('/captain-login')
         }
@@ -30,7 +32,7 @@ const CaptainProtectWrapper = ({
             }
         })
             .catch(err => {
-
+                console.error("Error fetching captain profile:", err.response ? err.response.data : err.message);
                 localStorage.removeItem('token')
                 navigate('/captain-login')
             })

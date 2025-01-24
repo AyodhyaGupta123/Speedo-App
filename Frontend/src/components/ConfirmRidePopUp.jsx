@@ -33,10 +33,10 @@ const ConfirmRidePopUp = (props) => {
             <h5 className='p-1 text-center w-[93%] absolute top-0' onClick={() => {
                 props.setRidePopupPanel(false)
             }}><i className="text-3xl text-gray-200 ri-arrow-down-wide-line"></i></h5>
-            <h3 className='text-2xl font-semibold mb-5'>Confirm this ride to Start</h3>
-            <div className='flex items-center justify-between p-3 border-2 border-yellow-400 rounded-lg mt-4'>
+            <h3 className='text-2xl flex font-semibold absolute top-0 p-3'>Confirm this ride to Start</h3>
+            <div className='flex items-center justify-between p-2 border-2 border-yellow-400 rounded-lg mt-2'>
                 <div className='flex items-center gap-3 '>
-                    <img className='h-12 rounded-full object-cover w-12' src="https://i.pinimg.com/236x/af/26/28/af26280b0ca305be47df0b799ed1b12b.jpg" alt="" />
+                    <img className='h-12 rounded-full object-cover w-12' src="https://media.istockphoto.com/id/1369915787/photo/young-woman-in-office-working-on-laptop-stock-photo.webp?a=1&b=1&s=612x612&w=0&k=20&c=yDojZmptkNMxNDHEr1ifbTlT_QsUfEwtmr_rUrJA88E=" alt="" />
                     <h2 className='text-lg font-medium capitalize'>{props.ride?.user.fullname.firstname}</h2>
                 </div>
                 <h5 className='text-lg font-semibold'>2.2 KM</h5>
@@ -61,7 +61,7 @@ const ConfirmRidePopUp = (props) => {
                         <i className="ri-currency-line"></i>
                         <div>
                             <h3 className='text-lg font-medium'>₹{props.ride?.fare} </h3>
-                            <p className='text-sm -mt-1 text-gray-600'>Cash Cash</p>
+                            <p className='text-sm -mt-1 text-gray-600'>Cash 150</p>
                         </div>
                     </div>
                 </div>

@@ -14,7 +14,12 @@ const UserSignup = () => {
 
   const navigate = useNavigate()
 
+
+
   const { user, setUser } = useContext(UserDataContext)
+
+
+
 
   const submitHandler = async (e) => {
     e.preventDefault()
@@ -27,30 +32,30 @@ const UserSignup = () => {
       password: password
     }
 
-    try {
-      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`, newUser)
-      if (response.status === 201) {
-        const data = response.data
-        setUser(data.user)
-        localStorage.setItem('token', data.token)
-        navigate('/home')
-      }
-    } catch (error) {
-      console.error('Registration failed:', error)
+    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`, newUser)
+
+    if (response.status === 201) {
+      const data = response.data
+      setUser(data.user)
+      localStorage.setItem('token', data.token)
+      navigate('/home')
     }
+
 
     setEmail('')
     setFirstName('')
     setLastName('')
     setPassword('')
+
   }
   return (
     <div>
       <div className='p-7 h-screen flex flex-col justify-between'>
         <div>
         <img className='w-52 h-30 -mt-12 -ml-16  mb-3' src="https://i.imgur.com/5UXnJwk.png" alt="" />
-
-          <form onSubmit={submitHandler}>
+          <form onSubmit={(e) => {
+            submitHandler(e)
+          }}>
 
             <h3 className='text-lg w-1/2  font-medium mb-2'>What's your name</h3>
             <div className='flex gap-4 mb-7'>
