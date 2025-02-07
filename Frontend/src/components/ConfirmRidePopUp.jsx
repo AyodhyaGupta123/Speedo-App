@@ -10,6 +10,11 @@ const ConfirmRidePopUp = (props) => {
     const submitHander = async (e) => {
         e.preventDefault()
 
+        if (!data) {
+            console.error('Data is null or undefined');
+            return; // Exit the function if data is not available
+          }
+
         const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/rides/start-ride`, {
             params: {
                 rideId: props.ride._id,
@@ -39,21 +44,21 @@ const ConfirmRidePopUp = (props) => {
                     <img className='h-12 rounded-full object-cover w-12' src="https://media.istockphoto.com/id/1369915787/photo/young-woman-in-office-working-on-laptop-stock-photo.webp?a=1&b=1&s=612x612&w=0&k=20&c=yDojZmptkNMxNDHEr1ifbTlT_QsUfEwtmr_rUrJA88E=" alt="" />
                     <h2 className='text-lg font-medium capitalize'>{props.ride?.user.fullname.firstname}</h2>
                 </div>
-                <h5 className='text-lg font-semibold'>2.2 KM</h5>
+                <h5 className='text-lg font-semibold'>{props.ride.distance} KM</h5>
             </div>
             <div className='flex gap-2 justify-between flex-col items-center'>
                 <div className='w-full mt-5'>
                     <div className='flex items-center gap-5 p-3 border-b-2'>
                         <i className="ri-map-pin-user-fill"></i>
                         <div>
-                            <h3 className='text-lg font-medium'>562/11-A</h3>
+                            <h3 className='text-lg font-medium'>{props.ride?.pickup.address}</h3>
                             <p className='text-sm -mt-1 text-gray-600'>{props.ride?.pickup}</p>
                         </div>
                     </div>
                     <div className='flex items-center gap-5 p-3 border-b-2'>
                         <i className="text-lg ri-map-pin-2-fill"></i>
                         <div>
-                            <h3 className='text-lg font-medium'>562/11-A</h3>
+                            <h3 className='text-lg font-medium'>{props.ride?.destination.address}</h3>
                             <p className='text-sm -mt-1 text-gray-600'>{props.ride?.destination}</p>
                         </div>
                     </div>
