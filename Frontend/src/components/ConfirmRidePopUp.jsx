@@ -44,7 +44,7 @@ const ConfirmRidePopUp = (props) => {
                     <img className='h-12 rounded-full object-cover w-12' src="https://media.istockphoto.com/id/1369915787/photo/young-woman-in-office-working-on-laptop-stock-photo.webp?a=1&b=1&s=612x612&w=0&k=20&c=yDojZmptkNMxNDHEr1ifbTlT_QsUfEwtmr_rUrJA88E=" alt="" />
                     <h2 className='text-lg font-medium capitalize'>{props.ride?.user.fullname.firstname}</h2>
                 </div>
-                <h5 className='text-lg font-semibold'>{props.ride.distance} KM</h5>
+                <h5 className='text-lg font-semibold'>{props.ride ? props.ride.distance : 'N/A'} KM</h5>
             </div>
             <div className='flex gap-2 justify-between flex-col items-center'>
                 <div className='w-full mt-5'>

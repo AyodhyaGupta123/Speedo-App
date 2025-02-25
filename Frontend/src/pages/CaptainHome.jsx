@@ -13,6 +13,8 @@ import axios from "axios";
 const CaptainHome = () => {
   const [ridePopupPanel, setRidePopupPanel] = useState(false);
   const [confirmRidePopupPanel, setConfirmRidePopupPanel] = useState(false);
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+
 
   const ridePopupPanelRef = useRef(null);
   const confirmRidePopupPanelRef = useRef(null);
@@ -88,7 +90,7 @@ const CaptainHome = () => {
     function () {
       if (confirmRidePopupPanel) {
         gsap.to(confirmRidePopupPanelRef.current, {
-          transform: "translateY(0)",
+          transform: "translateY(0)",    
         });
       } else {
         gsap.to(confirmRidePopupPanelRef.current, {
@@ -128,13 +130,18 @@ const CaptainHome = () => {
         />
       </div>
       <div
-        ref={confirmRidePopupPanelRef}
-        className="fixed w-full h-screen z-10 bottom-0 translate-y-full bg-white px-3 py-10 pt-12" >
-        <ConfirmRidePopUp
-          ride={ride}
-          setConfirmRidePopupPanel={setConfirmRidePopupPanel}
-          setRidePopupPanel={setRidePopupPanel}  />
-      </div>
+  ref={confirmRidePopupPanelRef}
+  className={`fixed w-full h-screen z-10 bottom-0 px-3 py-10 mt-20 bg-gray-50 pt-5 transition-transform duration-300 ${
+    isPopupVisible ? "translate-y-0" : "translate-y-full"
+  }`}
+>
+  <ConfirmRidePopUp
+    ride={ride}
+    setConfirmRidePopupPanel={setConfirmRidePopupPanel}
+    setRidePopupPanel={setRidePopupPanel}
+  />
+</div>
+
     </div>
   );
 };
